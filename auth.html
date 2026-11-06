@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <title>Sign-in — Vacancy Radar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1 id="title">Vacancy Radar sign-in</h1>
+  <div id="ok" hidden>
+    <p>Threads sign-in is complete. Copy the code below and paste it into the app’s setup on your computer.
+      The code is valid for 1 hour and works only once.</p>
+    <p><b>Вхід у Threads виконано.</b> Скопіюйте код і вставте його в чат із Claude.
+      Код діє 1 годину і лише один раз.</p>
+    <div class="code" id="code"></div>
+    <button id="copy" type="button">Copy code / Копіювати код</button>
+    <p class="muted" id="copied" hidden>Copied / Скопійовано</p>
+  </div>
+  <div id="fail" hidden>
+    <p>Sign-in was cancelled or failed: <span id="reason"></span></p>
+    <p><b>Вхід скасовано або не вдався.</b> Спробуйте ще раз за посиланням, яке дав Claude.</p>
+  </div>
+  <div id="empty" hidden>
+    <p>This page receives the Threads sign-in result for Vacancy Radar. Open it through the sign-in link.</p>
+    <p>Ця сторінка показує результат входу в Threads. Відкривайте її через посилання для входу.</p>
+  </div>
+  <p class="muted"><a href="privacy.html">Privacy Policy</a> · <a href="index.html">About</a></p>
+</main>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var code = (params.get("code") || "").split("#")[0];
+    var error = params.get("error_description") || params.get("error");
+    if (code) {
+      document.getElementById("code").textContent = code;
+      document.getElementById("ok").hidden = false;
+      document.getElementById("copy").addEventListener("click", function () {
+        navigator.clipboard.writeText(code).then(function () {
+          document.getElementById("copied").hidden = false;
+        });
+      });
+    } else if (error) {
+      document.getElementById("reason").textContent = error;
+      document.getElementById("fail").hidden = false;
+    } else {
+      document.getElementById("empty").hidden = false;
+    }
+    // Прибираємо код з адресного рядка, щоб він не лишився в історії браузера.
+    if (window.location.search) {
+      history.replaceState(null, "", window.location.pathname);
+    }
+  })();
+</script>
+</body>
+</html>

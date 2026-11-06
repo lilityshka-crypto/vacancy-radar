@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Vacancy Radar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="data-deletion.html">Data Deletion</a>
+  </nav>
+
+  <h1>Privacy Policy</h1>
+  <p class="muted">Effective date: November 6, 2026</p>
+
+  <p>Vacancy Radar (“the app”) is a personal job-search tool operated by an individual developer
+    (GitHub user <a href="https://github.com/lilityshka-crypto">lilityshka-crypto</a>, “we”).
+    The app is used only by its owner. This policy explains what data the app accesses through the Threads API
+    and how it is handled.</p>
+
+  <h2>Data we access</h2>
+  <ul>
+    <li><b>Owner’s Threads profile</b> (permission <code>threads_basic</code>): the Threads user ID and username of the
+      owner, used only to confirm that sign-in worked.</li>
+    <li><b>Public Threads posts</b> (permission <code>threads_keyword_search</code>): posts returned by keyword search
+      for job-related terms. For each post the app reads the post ID, text, permalink, publication time,
+      the author’s username and whether the post has replies.</li>
+  </ul>
+  <p>The app does not access private messages, follower lists, passwords, or any data of other Threads users
+    beyond the public posts listed above.</p>
+
+  <h2>How we use the data</h2>
+  <ul>
+    <li>To decide whether a public post is a job offer for a designer, its text is checked with keyword rules and,
+      if it passes, analyzed by the Anthropic Claude API.</li>
+    <li>Relevant posts (summary, author username and link to the original post) are sent to the owner’s private
+      Telegram chat.</li>
+  </ul>
+  <p>We do not use the data for advertising, profiling, or training AI models, and we never sell it.</p>
+
+  <h2>Storage and retention</h2>
+  <ul>
+    <li>To avoid duplicate notifications, the app stores post IDs, normalized post links and short one-way hashes of
+      post text for up to 60 days. The text of posts is not stored.</li>
+    <li>The owner’s Threads access token is stored encrypted and is used only to call the Threads API.</li>
+  </ul>
+
+  <h2>Service providers</h2>
+  <p>The app runs on GitHub Actions (GitHub, Inc.). Post text is sent to Anthropic, PBC (Claude API) for analysis.
+    Notifications are delivered through Telegram. These providers process data only to perform these functions.
+    Data obtained through the Threads API is not shared with anyone else.</p>
+
+  <h2>Your choices and data deletion</h2>
+  <p>The owner can revoke the app’s access at any time in Threads: Settings → Account → Website permissions.
+    If you are the author of a public post and want any stored identifiers related to it deleted, follow the
+    instructions on the <a href="data-deletion.html">Data Deletion</a> page. We complete requests within 30 days.</p>
+
+  <h2>Changes and contact</h2>
+  <p>We will update this page if the app’s data practices change. Questions:
+    <a href="https://github.com/lilityshka-crypto/vacancy-radar/issues">open an issue on GitHub</a>.</p>
+
+  <hr>
+
+  <h1>Політика конфіденційності</h1>
+  <p class="muted">Чинна з 6 листопада 2026 року</p>
+  <p>«Радар вакансій» — особистий інструмент пошуку роботи, яким користується лише одна людина.</p>
+  <ul>
+    <li><b>Які дані:</b> ID та ім’я в Threads людини, яка користується застосунком; публічні дописи, знайдені
+      пошуком за словами про вакансії (ID, текст, посилання, час, ім’я автора, чи є коментарі).</li>
+    <li><b>Навіщо:</b> визначити, чи є допис вакансією для дизайнера (правила і Claude API від Anthropic),
+      і надіслати відповідні вакансії в особистий чат Telegram.</li>
+    <li><b>Зберігання:</b> лише ID, посилання та хеші тексту до 60 днів, щоб не надсилати повтори. Тексти дописів
+      не зберігаються. Ключ доступу Threads зберігається зашифрованим.</li>
+    <li><b>Передача:</b> дані не продаються. Їх обробляють лише GitHub (запуск), Anthropic (аналіз)
+      і Telegram (доставка).</li>
+    <li><b>Видалення:</b> див. сторінку <a href="data-deletion.html">видалення даних</a>.</li>
+  </ul>
+</main>
+</body>
+</html>
